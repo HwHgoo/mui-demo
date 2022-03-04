@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+import { Link } from 'react-router-dom'
 import './App.css';
 
 function App() {
@@ -23,4 +24,20 @@ function App() {
   );
 }
 
-export default App;
+function Navigate() {
+  return (
+    <div>
+      <h1>Bookkeeper</h1>
+      <nav
+        style={{
+          borderBottom: 'solid 1px',
+          paddingBottom: '1rem'
+        }}
+      >
+        <Link to='/login'>login</Link>
+      </nav>
+    </div>
+  )
+}
+
+export { Navigate, App };
