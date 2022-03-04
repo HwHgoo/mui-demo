@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Link } from 'react-router-dom'
 import LockOpen from '@mui/icons-material/LockOpen'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginIcon from '@mui/icons-material/Login';
@@ -100,8 +101,8 @@ class LoginForm extends React.Component<ILoginFormProps, ILoginFormState> {
 
     handleSigninClick() {
         const data = {
-            name : this.state.account,
-            passwd : this.state.passwd
+            name: this.state.account,
+            passwd: this.state.passwd
         }
         const res = Axios.post('http://10.253.50.11:9527/api/base/login', data);
         console.log(res);
@@ -171,18 +172,20 @@ class LoginForm extends React.Component<ILoginFormProps, ILoginFormState> {
                     >
                         <ArticleIcon sx={{ marginRight: 1 }} />Sign up
                     </Button>
-                    <Button
-                        sx={{
-                            marginTop: 0.5,
-                            width: 120,
-                            height: 40,
-                        }}
-                        variant={'contained'}
-                        size={'small'}
-                        onClick={this.handleSigninClick}
-                    >
-                        Sign in<LoginIcon sx={{ marginLeft: 1 }} />
-                    </Button>
+                    <Link to='/mainpage'>
+                        <Button
+                            sx={{
+                                marginTop: 0.5,
+                                width: 120,
+                                height: 40,
+                            }}
+                            variant={'contained'}
+                            size={'small'}
+                            onClick={this.handleSigninClick}
+                        >
+                            Sign in<LoginIcon sx={{ marginLeft: 1 }} />
+                        </Button>
+                    </Link>
                 </Box>
 
             </Box>
