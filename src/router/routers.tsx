@@ -9,7 +9,7 @@ function Routers() {
             <Routes>
                 <Route path='/' element={<Navigate />} />
                 <Route path='/login' element={<Login />} />
-                <Route path='/mainpage' />
+                <Route path='/mainpage' element={<MainPage />} />
             </Routes>
         </BrowserRouter>
     )

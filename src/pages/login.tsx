@@ -11,7 +11,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginIcon from '@mui/icons-material/Login';
 import ArticleIcon from '@mui/icons-material/Article';
 import Axios from "axios";
-import { IImgCard } from './interfaces';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { push, pull, pop, IImgCard } from '../store/imgcards'
+import '../css/login.css'
 
 const theme = createTheme();
 
@@ -31,7 +33,7 @@ function InputBox(props: IInputBoxProps) {
     const icon = props.icon;
     return (
         <Box
-            display={'flex'} alignItems='flex-end' marginTop={2} width={'90%'}
+            display={'flex'} alignItems='flex-end' marginTop={2} width={'40%'}
         >
             {icon}
             <TextField
@@ -65,18 +67,19 @@ function LoginForm() {
     />;
 
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const login = () => {
+        console.log('click')
         Axios.post('http://10.253.50.11:9527/api/base/login', { name: account, passwd: passwd })
             .then(function (rsp) {
                 if (rsp.status !== 200) {
                     return
                 }
-                console.log(rsp.data)
                 if (rsp.data.code !== 0) {
                     navigate('/mainpage')
                     return
                 } else {
-                    navigate('/')
+                    // navigate('/')
                 }
             });
     };
@@ -88,11 +91,11 @@ function LoginForm() {
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                marginTop: 20,
+                marginTop: 23,
                 alignItems: 'center',
-                width: '100%'
+                width: '100%',
+                height: '100%'
             }}
-            onSubmit={() => console.log('submit!')}
         >
 
             <InputBox
@@ -116,8 +119,8 @@ function LoginForm() {
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'space-between',
-                    width: '83%',
-                    marginTop: 2
+                    width: '40%',
+                    marginTop: 3
                 }}
             >
                 <Button
@@ -125,6 +128,7 @@ function LoginForm() {
                         margin: 0.5,
                         width: 121,
                         height: 40.5,
+                        color: '#dbdbdb'
                     }}
                     variant={'outlined'}
                     size={'small'}
@@ -154,16 +158,19 @@ function LoginForm() {
 
 function Login() {
     return (
-        <ThemeProvider theme={theme}>
-            <Container
-                maxWidth='xs'
-                component='main'
-            >
-                <CssBaseline>
-                    <LoginForm />
-                </CssBaseline>
-            </Container>
-        </ThemeProvider>
+        <Container
+            component='main'
+            className='login-container'
+            maxWidth={false}
+            sx={{
+                width: '100%',
+                height: '100%'
+            }}
+        >
+            <CssBaseline>
+                <LoginForm />
+            </CssBaseline>
+        </Container>
     );
 }
 
