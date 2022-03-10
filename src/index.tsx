@@ -5,14 +5,18 @@ import reportWebVitals from './reportWebVitals';
 import Routers from './router/routers'
 import { Provider } from 'react-redux'
 import store from './store/store'
+import Test from './pages/test'
+import {ThemeProvider, createTheme} from '@mui/material/styles'
+
+const theme = createTheme();
 
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <Routers />
-    </React.StrictMode>,
+    <ThemeProvider theme={theme} >
+      <Test />
+    </ThemeProvider>
   </Provider>
 
   ,rootElement

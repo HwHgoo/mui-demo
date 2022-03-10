@@ -33,7 +33,7 @@ function InputBox(props: IInputBoxProps) {
     const icon = props.icon;
     return (
         <Box
-            display={'flex'} alignItems='flex-end' marginTop={2} width={'40%'}
+            display={'flex'} alignItems='flex-end' marginTop={2} minWidth={'20%'} maxWidth={'80%'}
         >
             {icon}
             <TextField
@@ -91,7 +91,7 @@ function LoginForm() {
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                marginTop: 23,
+                marginTop: 35,
                 alignItems: 'center',
                 width: '100%',
                 height: '100%'
@@ -119,7 +119,8 @@ function LoginForm() {
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'space-between',
-                    width: '40%',
+                    minWidth: '20%',
+                    maxWidth: '80%',
                     marginTop: 3
                 }}
             >
@@ -128,8 +129,8 @@ function LoginForm() {
                         margin: 0.5,
                         width: 121,
                         height: 40.5,
-                        color: '#dbdbdb'
                     }}
+                    color={'primary'}
                     variant={'outlined'}
                     size={'small'}
                 >
