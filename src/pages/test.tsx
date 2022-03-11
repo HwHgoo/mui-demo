@@ -10,6 +10,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import LockOpen from '@mui/icons-material/LockOpen'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Bg from '../resources/images/bg.jpg'
+import './test.css'
 
 const useStyles = makeStyles((theme: Theme) => ({
     container: {
@@ -49,7 +50,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 
     btns: {
         marginTop: '15px'
-    }
+    },
+
 }));
 
 export default function Test() {
@@ -82,10 +84,11 @@ export default function Test() {
                             width: 120,
                             height: 40,
                         }}
-                        variant={'outlined'}
+                        variant={'contained'}
                         size={'small'}
                         color={'info'}
-                        // onClick={login}
+                        className='btn'
+                    // onClick={login}
                     >
                         Sign in<LoginIcon sx={{ marginLeft: 1 }} />
                     </Button>
